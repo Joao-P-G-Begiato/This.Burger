@@ -54,6 +54,18 @@ class DatabaseMetodos{
             })
         })
     }
+    static listarTodosClientes(){
+        const query = `SELECT * FROM clientes`
+        return new Promise((resolve, reject)=>{
+            Database.all(query, (e, resultado)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    return resolve(resultado)
+                }
+            })
+        })
+    }
 }
 
 export default DatabaseMetodos
