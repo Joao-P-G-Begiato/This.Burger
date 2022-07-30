@@ -1,7 +1,6 @@
 import DAO from './DAO.js'
 
 
-
 class DatabaseEstoqueMetodo extends DAO {
   static async criarTabelaEstoque (){
     const query = `
