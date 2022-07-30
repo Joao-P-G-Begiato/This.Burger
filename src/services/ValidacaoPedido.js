@@ -11,11 +11,11 @@ export default class ValidacaoPedido {
         return quantidadeItens > 0;
     }
 
-    // static validaTotalPedido(totalPedido) {
-    //     return totalPedido > 0;
-    // }
+    static validaTotalPedido(totalPedido) {
+        return totalPedido > 0;
+    }
     
     static isValid(idCliente, itensPedido, quantidadeItens){
-      return this.validaIdCliente(idCliente) && this.validaItensPedido(itensPedido) && this.validaQuantidadeItens(quantidadeItens)
+      return this.validaIdCliente(idCliente) && this.validaItensPedido(itensPedido) && this.validaQuantidadeItens(quantidadeItens) && this.totalPedido(totalPedido)
     } 
   }
