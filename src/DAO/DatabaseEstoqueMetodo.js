@@ -2,7 +2,7 @@ import DAO from './DAO.js'
 
 
 
-class DatabaseEstoqueMetodos extends DAO {
+class DatabaseEstoqueMetodo extends DAO {
   static async criarTabelaEstoque (){
     const query = `
         CREATE TABLE IF NOT EXISTS estoque(
@@ -46,4 +46,4 @@ class DatabaseEstoqueMetodos extends DAO {
 
 }
 
-export default DatabaseEstoqueMetodos
+export default DatabaseEstoqueMetodo
