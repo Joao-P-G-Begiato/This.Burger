@@ -8,7 +8,7 @@ class DAO{
             if(e){
                 console.log(e)
             } else {
-                console.log("Chaves estrangeiras estão ativas")
+                console.log("Entidade está ativa")
             }
         })
     }
