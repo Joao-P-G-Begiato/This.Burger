@@ -19,22 +19,22 @@ class DatabasePedidoMetodo extends DAO {
     const resposta = await this.inserir(pedido, query)
     return resposta  
   }
-  static async listarTodosPedido(){
+  static async listarTodosPedidos(){
     const query = `SELECT * FROM pedido`
     const resposta = await this.listarTodos(query)
     return resposta
   }
-  static async listarPedidoPorId(id){
+  static async listarPedidosPorId(id){
     const query = `SELECT * FROM pedido WHERE id = ?`
     const resposta = await this.listarPorId(id, query)
     return resposta
   }
-  static async deletarPedidoPorId(id){
+  static async deletarPedidosPorId(id){
     const query = `DELETE FROM pedido WHERE id = ?`
     const resposta = await this.deletarPorId(id, query)
     return resposta
   }
-  static async atualizarPedidoPorId(id, pedido){
+  static async atualizarPedidosPorId(id, pedido){
     const query = `UPDATE pedido
     SET idCliente = ?,
     itensPedido = ?,
