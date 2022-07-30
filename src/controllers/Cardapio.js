@@ -7,7 +7,7 @@ DatabaseCardapioMetodo.criarTabelaCardapio()
 class Cardapio {
   static rotas(app) {
     app.get("/cardapio", async (req,res)=>{
-      const response = await DatabasecardapioMetodo.listarTodosCardapio()
+      const response = await DatabaseCardapioMetodo.listarTodosCardapio()
       res.status(200).json(response)
     })
     app.get("/cardapio/:id", async (req, res)=>{
@@ -22,7 +22,7 @@ class Cardapio {
       }
     })
     app.post("/cardapio", async (req, res)=>{
-    const isValid = ValidacaoCardapio.isValid(...Object.values(req.body))
+    const isValid = validacaoCardapio.isValid(...Object.values(req.body))
     try {
         if(isValid){
             const cardapio = new cardapioModel(...Object.values(req.body))
