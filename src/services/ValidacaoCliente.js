@@ -7,7 +7,7 @@ export default class ValidacaoCliente {
     return tel == telefone
   }
   static validaCPF(cpf){
-    const regex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
+    const regex = /^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/
     return regex.test(cpf)
   }
   static validaEndereco(endereco){
