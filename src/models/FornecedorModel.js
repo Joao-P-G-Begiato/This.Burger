@@ -1,10 +1,11 @@
 class fornecedorModel {
-    constructor(nomeFornecedor, taxa, endereco, item, telefone ) {
-        this.nomeFornecedo = nomeFornecedor,
+    constructor(nomeFornecedor, taxa, endereco, item, telefone, cnpj ) {
+        this.nomeFornecedor = nomeFornecedor,
         this.taxa =  taxa,
         this.endereco = endereco,
         this.item = item, 
-        this.telefone = telefone
+        this.telefone = telefone,
+        this.cnpj = cnpj
     }
 }
 

@@ -10,13 +10,14 @@ class DatabaseFornecedorMetodo extends DAO {
           taxa VARCHAR,
           endereco VARCHAR,
           item VARCHAR,
-          telefone VARCHAR
+          telefone VARCHAR,
+          cnpj VARCHAR
         )`
     const resposta = await this.criarTabela(query)
     return resposta    
   }
   static async inserirFornecedor(fornecedor){
-    const query = `INSERT INTO fornecedor(nomeFornecedor, taxa, endereco, item, telefone ) VALUES (?,?,?,?,?)`
+    const query = `INSERT INTO fornecedor(nomeFornecedor, taxa, endereco, item, telefone, cnpj ) VALUES (?,?,?,?,?,?)`
     const resposta = await this.inserir(fornecedor, query)
     return resposta  
   }
@@ -41,7 +42,8 @@ class DatabaseFornecedorMetodo extends DAO {
       taxa = ?,
       endereco = ?,
       item = ?,
-      telefone = ?
+      telefone = ?,
+      cnpj = ?
     WHERE id = ?`
     const resposta = await this.atualizarPorId(fornecedor,id, query)
     return resposta
