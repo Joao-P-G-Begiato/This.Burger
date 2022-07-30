@@ -1,18 +1,18 @@
 export default class ValidacaoFornecedor {
     static validaNomeFornecedor(nomeFornecedor){
-      return nomeFornecedor.length > 3;
+      return nomeFornecedor.length >= 3;
     }
 
     static validataxa(taxa){
-      return taxa.length > 0;
+      return taxa > 0;
     }
 
     static validaEndereco(endereco){
-      return endereco? endereco.length > 7 : false
+      return endereco? endereco.length >= 7 : false
     }
 
     static validaItem(item) {
-      return item? item.length > 3 : false
+      return item? item.length >= 3 : false
     }
 
     static validaTelefone(telefone) {
