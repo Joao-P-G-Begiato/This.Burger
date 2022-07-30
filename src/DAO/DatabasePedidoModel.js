@@ -7,7 +7,7 @@ class DatabasePedidoMetodo extends DAO {
         CREATE TABLE IF NOT EXISTS pedido(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             idCliente INTEGER,
-            itensPedido INTEGER,
+            itensPedido VARCHAR,
             quantidadeItens INTEGER,
             totalPedido INTEGER
         )`

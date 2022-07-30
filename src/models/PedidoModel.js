@@ -1,10 +1,11 @@
 class pedidoModel {
-    constructor(idCliente, itensPedido, quantidadeItens, totalPedido) {
+    constructor(idCliente, itensPedido, quantidadeItens) {
         this.idCliente = idCliente
         this.itensPedido = itensPedido
         this.quantidadeItens = quantidadeItens
-        this.totalPedido = totalPedido
     }
+
+   totalPedido = Object.values(this.itensPedido).reduce((a,b)=> a+b);
 }
 
 
