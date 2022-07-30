@@ -1,6 +1,6 @@
 export default class ValidacaoEstoque {
     static validaNomeIngrediente(nomeIngrediente){
-      return nomeIngrediente.length >= 3
+      return nomeIngrediente ? nomeIngrediente.length >= 3 : false
     }
 
     static validaQuantidadeIngrediente(quantidadeIngrediente){
@@ -8,7 +8,7 @@ export default class ValidacaoEstoque {
     }
 
     static validaFornecedorIngrediente(fornecedorIngrediente){
-        return fornecedorIngrediente.length >= 3
+        return fornecedorIngrediente ? fornecedorIngrediente.length >= 3 : false
     }
     
     static isValid(nomeIngrediente, quantidadeIngrediente, fornecedorIngrediente){
