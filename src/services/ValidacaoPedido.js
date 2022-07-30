@@ -15,7 +15,7 @@ export default class ValidacaoPedido {
         return totalPedido > 0;
     }
     
-    static isValid(idCliente, itensPedido, quantidadeItens){
-      return this.validaIdCliente(idCliente) && this.validaItensPedido(itensPedido) && this.validaQuantidadeItens(quantidadeItens) && this.totalPedido(totalPedido)
+    static isValid(idCliente, itensPedido, quantidadeItens, totalPedido){
+      return this.validaIdCliente(idCliente) && this.validaItensPedido(itensPedido) && this.validaQuantidadeItens(quantidadeItens) && this.validaTotalPedido(totalPedido)
     } 
   }
