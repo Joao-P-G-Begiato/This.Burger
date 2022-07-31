@@ -29,7 +29,7 @@ class Cliente {
             const response = await DatabaseClienteMetodo.inserirCliente(cliente)
             res.status(201).json(response)
         } else {
-            throw new Error("Requisição incompleta, revise o corpo da mesma.")
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
         }
     } catch(error) {
         res.status(400).json(error.message)
@@ -45,7 +45,10 @@ class Cliente {
         if(isValid){
           const cliente = new ClienteModel(...Object.values(req.body))
           const response = DatabaseClienteMetodo.atualizarClientePorId(req.params.id, cliente)
-          res.status(201).json(response)}
+          res.status(201).json(response)
+        }else {
+          throw new Error("Requisição incorreta, revise o corpo da mesma.")
+      }
       }catch(error){
         res.status(400).json(error.message)
       }

@@ -29,21 +29,28 @@ class Pedido {
             const response = await DatabasePedidoMetodo.inserirPedido(pedido)
             res.status(201).json(response)
         } else {
-            throw new Error("Requisição incompleta, revise o corpo da mesma.")
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
         }
     } catch(error) {
         res.status(400).json(error.message)
     }
     })
-    app.put("/pedido/:id", (req, res)=> {
+    app.put("/pedido/:id", async (req, res)=> {
       const isValid = ValidacaoPedido.isValid(...Object.values(req.body))
-
-      if(isValid){
+      try{
+        const pedidoId = await DatabasePedidoMetodo.listarPedidosPorId(req.params.id)
+        if(!pedidoId){
+          throw new Error("Item não existente para esse id, utilize o método post")
+        }
+        if(isValid){
           const pedido = new PedidoModel(...Object.values(req.body))
           const response = DatabasePedidoMetodo.atualizarPedidosPorId(req.params.id, pedido)
           res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Erro"})
+        }else {
+          throw new Error("Requisição incorreta, revise o corpo da mesma.")
+      }
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/pedido/:id", async (req, res) => {

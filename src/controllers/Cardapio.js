@@ -29,7 +29,7 @@ class Cardapio {
             const response = await DatabaseCardapioMetodo.inserirCardapio(cardapio)
             res.status(201).json(response)
         } else {
-            throw new Error("Requisição incompleta, revise o corpo da mesma.")
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
         }
     } catch(error) {
         res.status(400).json(error.message)
@@ -45,7 +45,10 @@ class Cardapio {
         if(isValid){
           const cardapio = new CardapioModel(...Object.values(req.body))
           const response = DatabaseCardapioMetodo.atualizarCardapioPorId(req.params.id, cardapio)
-          res.status(201).json(response)}
+          res.status(201).json(response)
+        }else {
+          throw new Error("Requisição incorreta, revise o corpo da mesma.")
+      }
       }catch(error){
         res.status(400).json(error.message)
       }

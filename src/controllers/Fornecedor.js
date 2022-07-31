@@ -45,7 +45,10 @@ class Fornecedor {
         if(isValid){
           const fornecedor = new FornecedorModel(...Object.values(req.body))
           const response = DatabaseFornecedorMetodo.atualizarFornecedorPorId(req.params.id, fornecedor)
-          res.status(201).json(response)}
+          res.status(201).json(response)
+        }else {
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
+        }
       }catch(error){
         res.status(400).json(error.message)
       }
@@ -54,7 +57,7 @@ class Fornecedor {
       try {                
           const fornecedor = await DatabaseFornecedorMetodo.deletarFornecedorPorId(req.params.id)
           if(!fornecedor){
-              throw new Error("Requisição incompleta, revise o corpo da mesma.")
+              throw new Error("Requisição incorreta, revise o corpo da mesma.")
           }
           res.status(200).json(fornecedor)
       } catch (error) {    
