@@ -35,15 +35,19 @@ class Estoque {
         res.status(400).json(error.message)
     }
     })
-    app.put("/estoque/:id", (req, res)=> {
+    app.put("/estoque/:id", async (req, res)=> {
       const isValid = ValidacaoEstoque.isValid(...Object.values(req.body))
-
-      if(isValid){
-          const Estoque = new EstoqueModel(...Object.values(req.body))
-          const response = DatabaseEstoqueMetodo.atualizarEstoquePorId(req.params.id, Estoque)
-          res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Requisição incompleta, revise o corpo da mesma."})
+      try{
+        const estoqueId = await DatabaseEstoqueMetodo.listarEstoquePorId(req.params.id)
+        if(!estoqueId){
+          throw new Error("Item não existente para esse id, utilize o método post")
+        }
+        if(isValid){
+          const estoque = new EstoqueModel(...Object.values(req.body))
+          const response = DatabaseestoqueMetodo.atualizarEstoquePorId(req.params.id, estoque)
+          res.status(201).json(response)}
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/estoque/:id", async (req, res) => {
