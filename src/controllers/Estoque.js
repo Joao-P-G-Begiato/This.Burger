@@ -1,5 +1,5 @@
 import DatabaseEstoqueMetodo from '../DAO/DatabaseEstoqueMetodo.js'
-import estoqueModel from '../models/estoqueModel.js'
+import EstoqueModel from '../models/EstoqueModel.js'
 import ValidacaoEstoque from '../services/ValidacaoEstoque.js'
 
 DatabaseEstoqueMetodo.criarTabelaEstoque()
@@ -14,7 +14,7 @@ class Estoque {
       try {
           const Estoque = await DatabaseEstoqueMetodo.listarEstoquePorId(req.params.id)
           if(!Estoque){
-              throw new Error("Estoque não encontrado para esse Id")
+              throw new Error("Item não encontrado para esse Id")
           }
           res.status(200).json(Estoque)
       } catch (error) {
@@ -25,32 +25,39 @@ class Estoque {
     const isValid = ValidacaoEstoque.isValid(...Object.values(req.body))
     try {
         if(isValid){
-            const estoque = new estoqueModel(...Object.values(req.body))
+            const estoque = new EstoqueModel(...Object.values(req.body))
             const response = await DatabaseEstoqueMetodo.inserirEstoque(estoque)
             res.status(201).json(response)
         } else {
-            throw new Error("Requisição incompleta, revise o corpo da mesma.")
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
         }
     } catch(error) {
         res.status(400).json(error.message)
     }
     })
-    app.put("/estoque/:id", (req, res)=> {
+    app.put("/estoque/:id", async (req, res)=> {
       const isValid = ValidacaoEstoque.isValid(...Object.values(req.body))
-
-      if(isValid){
-          const Estoque = new estoqueModel(...Object.values(req.body))
-          const response = DatabaseEstoqueMetodo.atualizarEstoquePorId(req.params.id, Estoque)
+      try{
+        const estoqueId = await DatabaseEstoqueMetodo.listarEstoquePorId(req.params.id)
+        if(!estoqueId){
+          throw new Error("Item não existente para esse id, utilize o método post")
+        }
+        if(isValid){
+          const estoque = new EstoqueModel(...Object.values(req.body))
+          const response = DatabaseEstoqueMetodo.atualizarEstoquePorId(req.params.id, estoque)
           res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Erro"})
+        }else {
+          throw new Error("Requisição incorreta, revise o corpo da mesma.")
+      }
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/estoque/:id", async (req, res) => {
       try {                
           const estoque = await DatabaseEstoqueMetodo.deletarEstoquePorId(req.params.id)
           if(!estoque){
-              throw new Error("Estoque não encontrado")
+              throw new Error("Item não encontrado")
           }
           res.status(200).json(estoque)
       } catch (error) {    

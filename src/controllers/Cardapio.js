@@ -1,6 +1,6 @@
 import DatabaseCardapioMetodo from '../DAO/DatabaseCardapioMetodo.js'
-import cardapioModel from '../models/cardapioModel.js'
-import validacaoCardapio from '../services/validacaoCardapio.js'
+import CardapioModel from '../models/CardapioModel.js'
+import ValidacaoCardapio from '../services/ValidacaoCardapio.js'
 
 DatabaseCardapioMetodo.criarTabelaCardapio()
 
@@ -14,7 +14,7 @@ class Cardapio {
       try {
           const cardapio = await DatabaseCardapioMetodo.listarCardapioPorId(req.params.id)
           if(!cardapio){
-              throw new Error("cardapio não encontrado para esse Id")
+              throw new Error("Item não encontrado para esse Id")
           }
           res.status(200).json(cardapio)
       } catch (error) {
@@ -22,35 +22,42 @@ class Cardapio {
       }
     })
     app.post("/cardapio", async (req, res)=>{
-    const isValid = validacaoCardapio.isValid(...Object.values(req.body))
+    const isValid = ValidacaoCardapio.isValid(...Object.values(req.body))
     try {
         if(isValid){
-            const cardapio = new cardapioModel(...Object.values(req.body))
+            const cardapio = new CardapioModel(...Object.values(req.body))
             const response = await DatabaseCardapioMetodo.inserirCardapio(cardapio)
             res.status(201).json(response)
         } else {
-            throw new Error("Requisição incompleta, revise o corpo da mesma.")
+            throw new Error("Requisição incorreta, revise o corpo da mesma.")
         }
     } catch(error) {
         res.status(400).json(error.message)
     }
     })
-    app.put("/cardapio/:id", (req, res)=> {
-      const isValid = validacaoCardapio.isValid(...Object.values(req.body))
-
-      if(isValid){
-          const cardapio = new cardapioModel(...Object.values(req.body))
+    app.put("/cardapio/:id", async (req, res)=> {
+      const isValid = ValidacaoCardapio.isValid(...Object.values(req.body))
+      try{
+        const cardapioId = await DatabaseCardapioMetodo.listarCardapioPorId(req.params.id)
+        if(!cardapioId){
+          throw new Error("Item não existente para esse id, utilize o método post")
+        }
+        if(isValid){
+          const cardapio = new CardapioModel(...Object.values(req.body))
           const response = DatabaseCardapioMetodo.atualizarCardapioPorId(req.params.id, cardapio)
           res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Erro"})
+        }else {
+          throw new Error("Requisição incorreta, revise o corpo da mesma.")
+      }
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/cardapio/:id", async (req, res) => {
       try {                
           const cardapio = await DatabaseCardapioMetodo.deletarCardapioPorId(req.params.id)
           if(!cardapio){
-              throw new Error("cardapio não encontrado")
+              throw new Error("Item não encontrado")
           }
           res.status(200).json(cardapio)
       } catch (error) {    

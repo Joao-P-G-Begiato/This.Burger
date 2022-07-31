@@ -8,7 +8,11 @@ export default class ValidacaoPedido {
     }
 
     static validaQuantidadeItens(quantidadeItens){
+      if(typeof quantidadeItens === "number"){
         return quantidadeItens > 0;
+      }else{
+        return false
+      }
     }
 
     static validaTotalPedido(totalPedido) {
