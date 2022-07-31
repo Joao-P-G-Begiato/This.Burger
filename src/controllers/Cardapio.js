@@ -35,15 +35,19 @@ class Cardapio {
         res.status(400).json(error.message)
     }
     })
-    app.put("/cardapio/:id", (req, res)=> {
+    app.put("/cardapio/:id", async (req, res)=> {
       const isValid = ValidacaoCardapio.isValid(...Object.values(req.body))
-
-      if(isValid){
+      try{
+        const cardapioId = await DatabaseCardapioMetodo.listarCardapioPorId(req.params.id)
+        if(!cardapioId){
+          throw new Error("Item não existente para esse id, utilize o método post")
+        }
+        if(isValid){
           const cardapio = new CardapioModel(...Object.values(req.body))
           const response = DatabaseCardapioMetodo.atualizarCardapioPorId(req.params.id, cardapio)
-          res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Requisição incompleta, revise o corpo da mesma."})
+          res.status(201).json(response)}
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/cardapio/:id", async (req, res) => {

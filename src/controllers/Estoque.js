@@ -44,7 +44,7 @@ class Estoque {
         }
         if(isValid){
           const estoque = new EstoqueModel(...Object.values(req.body))
-          const response = DatabaseestoqueMetodo.atualizarEstoquePorId(req.params.id, estoque)
+          const response = DatabaseEstoqueMetodo.atualizarEstoquePorId(req.params.id, estoque)
           res.status(201).json(response)}
       }catch(error){
         res.status(400).json(error.message)
