@@ -35,15 +35,19 @@ class Cliente {
         res.status(400).json(error.message)
     }
     })
-    app.put("/clientes/:id", (req, res)=> {
+    app.put("/clientes/:id", async (req, res)=> {
       const isValid = ValidacaoCliente.isValid(...Object.values(req.body))
-
-      if(isValid){
+      try{
+        const clienteId = await DatabaseClienteMetodo.listarClientePorId(req.params.id)
+        if(!clienteId){
+          throw new Error("Cliente não existente para esse id, utilize o método post")
+        }
+        if(isValid){
           const cliente = new ClienteModel(...Object.values(req.body))
           const response = DatabaseClienteMetodo.atualizarClientePorId(req.params.id, cliente)
-          res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Requisição incompleta, revise o corpo da mesma."})
+          res.status(201).json(response)}
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/clientes/:id", async (req, res) => {
