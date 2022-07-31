@@ -1,5 +1,5 @@
 import DatabaseClienteMetodo from '../DAO/DatabaseClienteMetodo.js'
-import ClienteModel from '../models/clienteModel.js'
+import ClienteModel from '../models/ClienteModel.js'
 import ValidacaoCliente from '../services/ValidacaoCliente.js'
 
 DatabaseClienteMetodo.criarTabelaClientes()
@@ -43,7 +43,7 @@ class Cliente {
           const response = DatabaseClienteMetodo.atualizarClientePorId(req.params.id, cliente)
           res.status(201).json(response)
       } else {
-          res.status(400).json({Erro:"Erro"})
+          res.status(400).json({Erro:"Requisição incompleta, revise o corpo da mesma."})
       }
     })
     app.delete("/clientes/:id", async (req, res) => {

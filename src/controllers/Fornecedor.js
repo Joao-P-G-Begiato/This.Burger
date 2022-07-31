@@ -35,22 +35,26 @@ class Fornecedor {
         res.status(400).json(error.message)
     }
     })
-    app.put("/fornecedor/:id", (req, res)=> {
+    app.put("/fornecedor/:id", async (req, res)=> {
       const isValid = ValidacaoFornecedor.isValid(...Object.values(req.body))
-
-      if(isValid){
+      try{
+        const fornecedorId = await DatabaseFornecedorMetodo.listarFornecedorPorId(req.params.id)
+        if(!fornecedorId){
+          throw new Error("Fornecedor não existente para esse id, utilize o método post")
+        }
+        if(isValid){
           const fornecedor = new FornecedorModel(...Object.values(req.body))
           const response = DatabaseFornecedorMetodo.atualizarFornecedorPorId(req.params.id, fornecedor)
-          res.status(201).json(response)
-      } else {
-          res.status(400).json({Erro:"Erro"})
+          res.status(201).json(response)}
+      }catch(error){
+        res.status(400).json(error.message)
       }
     })
     app.delete("/fornecedor/:id", async (req, res) => {
       try {                
           const fornecedor = await DatabaseFornecedorMetodo.deletarFornecedorPorId(req.params.id)
           if(!fornecedor){
-              throw new Error("Fornecedor não encontrado")
+              throw new Error("Requisição incompleta, revise o corpo da mesma.")
           }
           res.status(200).json(fornecedor)
       } catch (error) {    

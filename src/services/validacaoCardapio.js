@@ -12,7 +12,7 @@ export default class ValidacaoCardapio {
     }
 
     static validaPreco(preco){
-       return preco > 0       
+      return preco > 0       
     }
     
     static isValid(nomeItem, ingredientes, preco){
