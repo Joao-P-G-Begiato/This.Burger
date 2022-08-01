@@ -11,14 +11,14 @@ dotenv.config()
 const port = process.env.PORT || 3000
 const app = express()
 
-app.listen(port, ()=>{
-    console.log(`Servidor rodando em http://localhost:${port}`)
-})
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
 
-app.use(express.json())
+app.use(express.json());
 
-Clientes.rotas(app)
-Cardapio.rotas(app)
-Estoque.rotas(app)
-Pedido.rotas(app)
-Fornecedor.rotas(app)
+Clientes.rotas(app);
+Cardapio.rotas(app);
+Estoque.rotas(app);
+Pedido.rotas(app);
+Fornecedor.rotas(app);
