@@ -1,4 +1,4 @@
-# DeBugger
+# This.Burger
 ## API REST
 
 Projeto de conclusão do quarto módulo do curso de Web Dev. FullStack da Resilia. 
@@ -56,7 +56,7 @@ sudo apt-get install -y nodejs
 Após a instalação do Node utilizaremos os comandos do NPM (Node Package Manager) no terminal para instalar a biblioteca Express:
 
 ```
-npm i express
+npm install
 ```
 Após a instalação você ele deve ter baixado uma pasta chamada node_modules conforme abaixo:
 
@@ -221,7 +221,6 @@ Modelo do corpo da requisição:
 
 ```
 
-
 Depois acesse a rota e escolha o método para cada uma das ações do CRUD
 
 **Método GET**
@@ -268,13 +267,15 @@ Quando terminar de utilizar a aplicação você irá precisar derrubar o servido
 ctrl + c
 ```
 
+---
 
-## 🛠️ Construído com
-
-Ferramentas utilizadas:
+## 🛠️ Construído com as seguintes ferramentas:
 
 * [Express](https://expressjs.com/pt-br/guide/routing.html)
 * [Node](https://nodejs.org/en/docs/)
+* [SQLite](https://www.sqlite.org/docs.html)
+
+---
 
 ## ✒️ Autores
 
@@ -286,10 +287,13 @@ Projeto desenvolvido em conjunto pelo Squad 1:
 * **Lucas Passos** - *Gestor de Gente* - [LucasBinho](https://github.com/LucasBinho)
 * **Rafael Jordão** - *Co-Facilitador* - [rafaelljordao](https://github.com/rafaelljordao)
 
+---
+
 ## 📄 Licença
 
 Este projeto está sob a licença MIT - veja o arquivo [LICENSE](https://github.com/Joao-P-G-Begiato/deburger/blob/main/LICENSE) para detalhes.
 
+---
 
 ## 🎁 Expressões de gratidão
 
@@ -297,4 +301,4 @@ Este projeto está sob a licença MIT - veja o arquivo [LICENSE](https://github.
 * Aos facilitadores Tech Jarom Aidukaitis e Leonardo Costa que nos acolheram nesse universo.
 * A facilitadora Anna Caroline Souza que nos deu força nos momentos mais tortuosos dessa jornada.
 
---- -->
+---
