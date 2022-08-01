@@ -66,11 +66,15 @@ class Cardapio {
     });
     app.delete("/cardapio/:id", async (req, res) => {
       try {
-        const cardapioId = await DatabaseCardapioMetodo.listarCardapioPorId(req.params.id)
-        if(!cardapioId){
-          throw new Error("Cardapio não encontrado")
+        const cardapioId = await DatabaseCardapioMetodo.listarCardapioPorId(
+          req.params.id
+        );
+        if (!cardapioId) {
+          throw new Error("Cardapio não encontrado");
         }
-        const cardapio = await DatabaseCardapioMetodo.deletarCardapioPorId(req.params.id)
+        const cardapio = await DatabaseCardapioMetodo.deletarCardapioPorId(
+          req.params.id
+        );
         res.status(200).json(cardapio);
       } catch (error) {
         console.log(error);

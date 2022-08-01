@@ -64,11 +64,15 @@ class Cliente {
     });
     app.delete("/clientes/:id", async (req, res) => {
       try {
-        const clienteId = await DatabaseClienteMetodo.listarClientePorId(req.params.id)
-        if(!clienteId){
-          throw new Error("Cliente não encontrado")
+        const clienteId = await DatabaseClienteMetodo.listarClientePorId(
+          req.params.id
+        );
+        if (!clienteId) {
+          throw new Error("Cliente não encontrado");
         }
-        const cliente = await DatabaseClienteMetodo.deletarClientePorId(req.params.id)
+        const cliente = await DatabaseClienteMetodo.deletarClientePorId(
+          req.params.id
+        );
         res.status(200).json(cliente);
       } catch (error) {
         console.log(error);

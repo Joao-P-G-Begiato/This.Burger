@@ -64,11 +64,15 @@ class Estoque {
     });
     app.delete("/estoque/:id", async (req, res) => {
       try {
-        const estoqueId = await DatabaseEstoqueMetodo.listarEstoquePorId(req.params.id)
-        if(!estoqueId){
-          throw new Error("Estoque não encontrado")
+        const estoqueId = await DatabaseEstoqueMetodo.listarEstoquePorId(
+          req.params.id
+        );
+        if (!estoqueId) {
+          throw new Error("Estoque não encontrado");
         }
-        const estoque = await DatabaseEstoqueMetodo.deletarEstoquePorId(req.params.id)
+        const estoque = await DatabaseEstoqueMetodo.deletarEstoquePorId(
+          req.params.id
+        );
         res.status(200).json(estoque);
       } catch (error) {
         console.log(error);

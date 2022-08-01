@@ -65,11 +65,13 @@ class Fornecedor {
     });
     app.delete("/fornecedor/:id", async (req, res) => {
       try {
-        const fornecedorId = await DatabaseFornecedorMetodo.listarFornecedorPorId(req.params.id)
-        if(!fornecedorId){
-          throw new Error("Fornecedor não encontrado")
+        const fornecedorId =
+          await DatabaseFornecedorMetodo.listarFornecedorPorId(req.params.id);
+        if (!fornecedorId) {
+          throw new Error("Fornecedor não encontrado");
         }
-        const fornecedor = await DatabaseFornecedorMetodo.deletarFornecedorPorId(req.params.id)
+        const fornecedor =
+          await DatabaseFornecedorMetodo.deletarFornecedorPorId(req.params.id);
         res.status(200).json(fornecedor);
       } catch (error) {
         console.log(error);
