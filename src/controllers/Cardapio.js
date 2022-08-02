@@ -1,6 +1,6 @@
 import DatabaseCardapioMetodo from "../DAO/DatabaseCardapioMetodo.js";
-import CardapioModel from "../models/CardapioModel.js";
-import ValidacaoCardapio from "../services/ValidacaoCardapio.js";
+import CardapioModel from "../models/cardapioModel.js";
+import ValidacaoCardapio from "../services/validacaoCardapio.js";
 
 DatabaseCardapioMetodo.criarTabelaCardapio();
 

@@ -1,5 +1,5 @@
 import DatabaseEstoqueMetodo from "../DAO/DatabaseEstoqueMetodo.js";
-import EstoqueModel from "../models/EstoqueModel.js";
+import EstoqueModel from "../models/estoqueModel.js";
 import ValidacaoEstoque from "../services/ValidacaoEstoque.js";
 
 DatabaseEstoqueMetodo.criarTabelaEstoque();
