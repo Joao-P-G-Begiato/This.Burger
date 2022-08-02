@@ -50,11 +50,11 @@ class Cliente {
         }
         if (isValid) {
           const cliente = new ClienteModel(...Object.values(req.body));
-          const response = DatabaseClienteMetodo.atualizarClientePorId(
+          const response = await DatabaseClienteMetodo.atualizarClientePorId(
             req.params.id,
             cliente
           );
-          res.status(201).json(response);
+          res.status(200).json(response);
         } else {
           throw new Error("Requisição incorreta, revise o corpo da mesma.");
         }

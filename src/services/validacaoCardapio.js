@@ -3,6 +3,7 @@ export default class ValidacaoCardapio {
     return nomeItem.length >= 3;
   }
 
+ 
   static validaIngredientes(ingredientes) {
     const ref = [
       "pao",

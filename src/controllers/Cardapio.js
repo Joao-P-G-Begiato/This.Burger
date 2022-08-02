@@ -52,11 +52,11 @@ class Cardapio {
         }
         if (isValid) {
           const cardapio = new CardapioModel(...Object.values(req.body));
-          const response = DatabaseCardapioMetodo.atualizarCardapioPorId(
+          const response = await DatabaseCardapioMetodo.atualizarCardapioPorId(
             req.params.id,
             cardapio
           );
-          res.status(201).json(response);
+          res.status(200).json(response);
         } else {
           throw new Error("Requisição incorreta, revise o corpo da mesma.");
         }
