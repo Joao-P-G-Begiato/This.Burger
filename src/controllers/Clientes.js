@@ -1,5 +1,5 @@
 import DatabaseClienteMetodo from "../DAO/DatabaseClienteMetodo.js";
-import ClienteModel from "../models/ClienteModel.js";
+import ClienteModel from "../models/clienteModel.js";
 import ValidacaoCliente from "../services/ValidacaoCliente.js";
 
 DatabaseClienteMetodo.criarTabelaClientes();

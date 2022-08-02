@@ -2,13 +2,13 @@ export default class ValidacaoCliente {
   static validaNome(nome) {
     return nome.length >= 3;
   }
-  static validaTelefone(telefone) {
-    const tel = parseInt(telefone);
-    return tel == telefone;
+  static validaTelefone(telefone){
+    const tel = parseInt(telefone)
+    return telefone.length == 11 && `${tel}`.length == telefone.length
   }
-  static validaCPF(cpf) {
-    const regex = /^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/;
-    return regex.test(cpf);
+  static validaCPF(cpf){
+    const ref = parseInt(cpf)
+    return cpf.length == 11 && `${ref}`.length == cpf.length
   }
   static validaEndereco(endereco) {
     return endereco.length >= 7;
