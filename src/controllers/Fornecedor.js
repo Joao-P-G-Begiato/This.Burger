@@ -51,11 +51,11 @@ class Fornecedor {
         }
         if (isValid) {
           const fornecedor = new FornecedorModel(...Object.values(req.body));
-          const response = DatabaseFornecedorMetodo.atualizarFornecedorPorId(
+          const response = await DatabaseFornecedorMetodo.atualizarFornecedorPorId(
             req.params.id,
             fornecedor
           );
-          res.status(201).json(response);
+          res.status(200).json(response);
         } else {
           throw new Error("Requisição incorreta, revise o corpo da mesma.");
         }

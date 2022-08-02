@@ -79,11 +79,11 @@ class DAO {
   static atualizarPorId(entidade, id, query) {
     const body = Object.values(entidade);
     return new Promise((resolve, reject) => {
-      Database.run(query, [...body, id], (e, result) => {
+      Database.run(query, [...body, id], (e) => {
         if (e) {
           reject(e.message);
         } else {
-          resolve(result);
+          resolve({message: `ID ${id} atualizado com sucesso.`});
         }
       });
     });

@@ -50,11 +50,11 @@ class Pedido {
         }
         if (isValid) {
           const pedido = new PedidoModel(...Object.values(req.body));
-          const response = DatabasePedidoMetodo.atualizarPedidosPorId(
+          const response = await DatabasePedidoMetodo.atualizarPedidosPorId(
             req.params.id,
             pedido
           );
-          res.status(201).json(response);
+          res.status(200).json(response);
         } else {
           throw new Error("Requisição incorreta, revise o corpo da mesma.");
         }

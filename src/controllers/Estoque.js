@@ -50,16 +50,16 @@ class Estoque {
         }
         if (isValid) {
           const estoque = new EstoqueModel(...Object.values(req.body));
-          const response = DatabaseEstoqueMetodo.atualizarEstoquePorId(
+          const response = await DatabaseEstoqueMetodo.atualizarEstoquePorId(
             req.params.id,
             estoque
           );
-          res.status(201).json(response);
+          res.status(200).json(response);
         } else {
           throw new Error("Requisição incorreta, revise o corpo da mesma.");
         }
       } catch (error) {
-        res.status(400).json(error.message);
+        res.status(400).json({Error: error.message});
       }
     });
     app.delete("/estoque/:id", async (req, res) => {
