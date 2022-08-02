@@ -15,24 +15,25 @@ export default class ValidacaoFornecedor {
     return item ? item.length >= 3 : false;
   }
 
-  static validaTelefone(telefone) {
-    const tel = parseInt(telefone);
-    return tel == telefone;
-  }
+    static validaTelefone(telefone) {
+      const tel = parseInt(telefone)
+      return telefone.length == 11 && tel == telefone
+    }
 
-  static validaCNPJ(cnpj) {
-    const regex = /^(\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})$/;
-    return regex.test(cnpj);
-  }
+    static validaCNPJ(cnpj) {
+      const ref = parseInt(cnpj)
+      return cnpj.length == 14 && ref == cnpj
+    }
+    
+    static isValid(nomeFornecedor, taxa, endereco, item, telefone, cnpj ){
+      return (
+        this.validaNomeFornecedor(nomeFornecedor) &&
+        this.validataxa(taxa) &&
+        this.validaEndereco(endereco) &&
+        this.validaItem(item) &&
+        this.validaTelefone(telefone) &&
+        this.validaCNPJ(cnpj)
+      );
+    }
+  } 
 
-  static isValid(nomeFornecedor, taxa, endereco, item, telefone, cnpj) {
-    return (
-      this.validaNomeFornecedor(nomeFornecedor) &&
-      this.validataxa(taxa) &&
-      this.validaEndereco(endereco) &&
-      this.validaItem(item) &&
-      this.validaTelefone(telefone) &&
-      this.validaCNPJ(cnpj)
-    );
-  }
-}
