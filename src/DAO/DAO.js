@@ -21,7 +21,7 @@ class DAO {
         if (e) {
           reject(e.message);
         } else {
-          resolve("Tabela clientes criada com sucesso!");
+          resolve("Tabela criada com sucesso!");
         }
       });
     });
@@ -35,7 +35,7 @@ class DAO {
         if (e) {
           reject(e.message);
         } else {
-          resolve({ error: false, message: "Cliente cadastrado com sucesso!" });
+          resolve({ error: false, message: "Cadastrado com sucesso!" });
         }
       });
     });
