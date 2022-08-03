@@ -105,6 +105,9 @@ Exemplo de como devem ser executados os comandos:
 
 Para acessar alguma das entidades deve-se acessar a rota correspondente (ex.: para acessar a entidade cardápio, coloque o complemento "/cardapio" ao final do link: http://localhost:3000/cardapio) e passar um objeto JSON conforme abaixo:
 
+**ATENÇÃO: Não se esqueça da vírgula entre um atributo e outro. O último atributo não deve conter vírgula.**
+
+
 ### Entidade Cardapio: 
 
 Acessar pela rota: http://localhost:3000/cardapio
@@ -112,15 +115,15 @@ Acessar pela rota: http://localhost:3000/cardapio
 Modelo do corpo da requisição: 
 ``` 
     {
-        "nomeItem" : "nome item"
-        "ingredientes" : "exemplo ingredientes"
+        "nomeItem" : "nome item",
+        "ingredientes" : "exemplo ingredientes",
         "preco" : "00.0"
     }
 
     Exemplo:
     {
-        "nomeItem" : "x-bug"
-        "ingredientes" : "pao, hamburguer e queijo"
+        "nomeItem" : "x-bug",
+        "ingredientes" : "pao, hamburguer e queijo",
         "preco" : "10.90"
     }
 
@@ -133,21 +136,21 @@ Acessar pela rota: http://localhost:3000/clientes
 Modelo do corpo da requisição: 
 ``` 
     {
-        "nome" : "nome cliente"
-        "endereco" : "rua exemplo"
-        "formaDePagamento" : "pix"
-        "cpf" : "12345678910"
-        "telefone" : "12345678910"
+        "nome" : "nome cliente",
+        "endereco" : "rua exemplo",
+        "formaDePagamento" : "pix",
+        "cpf" : "12345678910",
+        "telefone" : "12345678910",
         "email" : "email.cliente@exemplo.com"
     }
 
     Exemplo:
     {
-        "nome" : "José das Couves"
-        "endereco" : "rua das hortalicias 47"
-        "formaDePagamento" : "pix"
-        "cpf" : "12345678910"
-        "telefone" : "12345678910"
+        "nome" : "José das Couves",
+        "endereco" : "rua das hortalicias 47",
+        "formaDePagamento" : "pix",
+        "cpf" : "12345678910",
+        "telefone" : "12345678910",
         "email" : "jose.couves@gmail.com"
     }
 
@@ -159,15 +162,15 @@ Acessar pela rota: http://localhost:3000/estoque
 Modelo do corpo da requisição: 
 ``` 
     {
-        "nomeIngrediente" : "nome ingrediente"
-        "quantidadeIngrediente" : "00"
+        "nomeIngrediente" : "nome ingrediente",
+        "quantidadeIngrediente" : "00",
         "fornecedorIngrediente" : "nome fornecedor"
     }
 
     Exemplo:
     {
-        "nomeIngrediente" : "pao"
-        "quantidadeIngrediente" : "10"
+        "nomeIngrediente" : "pao",
+        "quantidadeIngrediente" : "10",
         "fornecedorIngrediente" : "padoca"
     }
 
@@ -179,21 +182,21 @@ Acessar pela rota: http://localhost:3000/fornecedor
 Modelo do corpo da requisição: 
 ``` 
     {
-        "nomeFornecedor" : "nome fornecedor"
-        "taxa" : "00"
-        "endereco" : "rua fornecedor"
-        "item" : "nome item"
-        "telefone" : "12345678910"
+        "nomeFornecedor" : "nome fornecedor",
+        "taxa" : "00",
+        "endereco" : "rua fornecedor",
+        "item" : "nome item",
+        "telefone" : "12345678910",
         "cnpj" : "12345678000111"
     }
 
     Exemplo:
     {
-       "nomeFornecedor" : "padoca"
-        "taxa" : "15"
-        "endereco" : "rua do pao 50"
-        "item" : "pao"
-        "telefone" : "12345678910"
+       "nomeFornecedor" : "padoca",
+        "taxa" : "15",
+        "endereco" : "rua do pao 50",
+        "item" : "pao",
+        "telefone" : "12345678910",
         "cnpj" : "12345678000111"
     }
 
@@ -205,17 +208,17 @@ Acessar pela rota: http://localhost:3000/fornecedor
 Modelo do corpo da requisição: 
 ``` 
     {
-        "idCliente" : "id cliente"
-        "itensPedido" : "exemplo item"
-        "quantidadeItens" : "00"
+        "idCliente" : "id cliente",
+        "itensPedido" : "exemplo item",
+        "quantidadeItens" : "00",
         "totalPedido" : "00"
     }
 
     Exemplo:
     {
-       "idCliente" : "03"
-        "itensPedido" : "x-bug"
-        "quantidadeItens" : "01"
+       "idCliente" : "03",
+        "itensPedido" : "x-bug",
+        "quantidadeItens" : "01",
         "totalPedido" : "10.99"
     }
 
