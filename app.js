@@ -5,7 +5,7 @@ import Cardapio from './src/controllers/Cardapio.js'
 import Estoque from './src/controllers/Estoque.js'
 import Pedido from './src/controllers/Pedido.js'
 import Fornecedor from './src/controllers/Fornecedor.js'
-import cors from "cors"
+import cors from 'cors'
 
 dotenv.config()
 
